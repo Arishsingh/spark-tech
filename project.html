@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Ideas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: url('Reflect.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 1rem;
+    }
+
+    .project-container {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 15px rgba(142, 72, 255, 0.5);
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+      font-size: 1.6rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #6e3cff, #8f66ff);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    ul {
+      list-style-type: decimal;
+      padding-left: 1.2rem;
+      line-height: 1.6;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+    }
+
+    .error {
+      color: #ff8080;
+      font-size: 0.9rem;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .project-container {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="project-container">
+    <h2>Project on your Tech</h2>
+    <input type="text" id="techInput" placeholder="e.g., ai, blockchain, cybersecurity, fresher" />
+    <button onclick="showIdeas()">Get Project Ideas</button>
+    <div id="errorMessage" class="error"></div>
+    <ul id="projectList"></ul>
+  </div>
+
+  <script>
+    const ideas = {
+      blockchain: [
+        "Blockchain-based Certificate Verification",
+        "Decentralized Voting System",
+        "Supply Chain Tracking System",
+        "NFT Marketplace",
+        "Decentralized Crowdfunding Platform",
+        "Blockchain Land Registry",
+        "Healthcare Record Management",
+        "Crypto Wallet System",
+        "Blockchain-based Resume Verification",
+        "Decentralized Ride-Sharing App",
+        "Token-based Reward System",
+        "Blockchain Loyalty Points System",
+        "Real Estate Tokenization",
+        "Decentralized Chat App",
+        "KYC System on Blockchain",
+        "Blockchain for Academic Records",
+        "Decentralized Identity Verification",
+        "Cross-border Payment System",
+        "Blockchain Insurance Claim System",
+        "Blockchain File Storage"
+      ],
+      cybersecurity: [
+        "Phishing Detection System",
+        "Password Strength Checker",
+        "Secure File Sharing App",
+        "Two-Factor Authentication System",
+        "Network Packet Sniffer",
+        "Keylogger Detection Tool",
+        "Anti-Virus Scanner",
+        "Cyber Threat Intelligence Dashboard",
+        "Secure Chat Application",
+        "SQL Injection Detection Tool",
+        "Web Vulnerability Scanner",
+        "Firewall Rule Simulator",
+        "Secure QR Code Generator",
+        "Digital Forensics Toolkit",
+        "Ransomware Simulation App",
+        "DDoS Attack Simulator",
+        "Encrypted Messaging System",
+        "Browser Security Extension",
+        "Secure Image Upload App",
+        "Cybersecurity Awareness Quiz"
+      ],
+      ai: [
+        "Face Recognition Attendance System",
+        "AI Chatbot for Customer Support",
+        "Spam Email Classifier",
+        "AI-based News Summarizer",
+        "Image Caption Generator",
+        "Fake News Detection System",
+        "AI Resume Screening Tool",
+        "Movie Recommendation System",
+        "Speech to Text Converter",
+        "Emotion Detection from Text",
+        "AI-based Diet Planner",
+        "AI Music Genre Classifier",
+        "Real-time Language Translator",
+        "AI Career Counselor Bot",
+        "Credit Card Fraud Detection",
+        "AI Essay Grading System",
+        "AI-based Plagiarism Checker",
+        "Intelligent Traffic Control System",
+        "Object Detection in Videos",
+        "AI-powered Interview Evaluator"
+      ],
+      fresher: [
+        "To-Do List Web App",
+        "Personal Portfolio Website",
+        "Weather App using API",
+        "Calculator using HTML/CSS/JS",
+        "Simple Blog Website",
+        "Student Result Management System",
+        "Online Quiz App",
+        "Library Management System",
+        "Notes Taking Web App",
+        "Digital Clock Web App",
+        "Image Gallery Website",
+        "Unit Converter Tool",
+        "Simple Chat UI Design",
+        "Basic Expense Tracker",
+        "Typing Speed Test App",
+        "Random Quote Generator",
+        "Login/Signup Page UI",
+        "Online Survey Form",
+        "Task Reminder App",
+        "E-commerce Product Page"
+      ]
+    };
+
+    function showIdeas() {
+      const tech = document.getElementById("techInput").value.trim().toLowerCase();
+      const list = document.getElementById("projectList");
+      const error = document.getElementById("errorMessage");
+      list.innerHTML = "";
+      error.textContent = "";
+
+      if (!tech || !ideas[tech]) {
+        error.textContent = "Please enter a valid domain: ai, blockchain, cybersecurity, or freshers.";
+        return;
+      }
+
+      ideas[tech].forEach((idea) => {
+        const li = document.createElement("li");
+        li.textContent = idea;
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

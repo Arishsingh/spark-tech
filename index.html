@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Detect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: url("Reflect.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 3rem;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    header nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 0.95rem;
+    }
+
+    header nav a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      animation: slideIn 2s ease-in-out;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 2rem;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: floatUp 2.5s ease-in-out;
+    }
+
+    .cta input {
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .cta button {
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      background: linear-gradient(to right, #6e3cff, #8f66ff);
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .beta {
+      color: #8a8a8a;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .partners {
+      margin-top: 4rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem 0;
+    }
+
+    .partners p {
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .logos img {
+      height: 40px;
+      opacity: 0.7;
+      transition: transform 0.3s ease;
+    }
+
+    .logos img:hover {
+      transform: scale(1.1);
+    }
+
+    .glow {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(142,72,255,0.4) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(60px);
+      z-index: -1;
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .features {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  padding: 1rem;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  animation: rotate 10s linear infinite;
+}
+
+.feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.feature h3 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: white;
+}
+
+/* Rotation animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+    @keyframes rotate {
+      0% {
+        transform: rotateY(0);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <header>
+    <h2>spark-tech</h2>
+    <nav>
+      <a href="project.html">Projects on your Tech</a>
+      <a href="problem.html">Real-life problems</a>
+      <a href="about.html">About Me</a>
+  
+      <a href="file:///Users/arishsingh/Library/Mobile%20Documents/com~apple~CloudDocs/new%20project/login.html">Log in </a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Build your project <br> through Real life ideas </h1>
+    <p> Thinking about real life problems can ba a bit hard sometimes but now we have spark-tech which will give real life problem statements which as a programer you can solve to build something great so here you go   </p>
+
+    <div class="cta">
+      <input type="text" placeholder="Enter your tech (e.g. Flutter, React, etc.)">
+      <button>Get Suggestions</button>
+  
+    <p class="beta">🌐 Beta release date  August 30th, 2025</p>
+  </section>
+
+  <section class="features">
+    <a href="project.html">
+      <div class="feature">
+        <img src="D7EDE727-A99E-4040-87E4-FE4427FCC6A2.gif" alt="Application Support" />
+        <h3>Project on your tech</h3>
+      </div>
+    </a>
+  
+    <a href="problem.html">
+      <div class="feature">
+        <img src="Unknown.gif" alt="Real life problem" />
+        <h3>Real life problem</h3>
+      </div>
+    </a>
+  
+    <a href="about.html">
+      <div class="feature">
+        <img src="Unknown-4.gif" alt="About the developer" />
+        <h3>About the developer</h3>
+     
+
+
+      </div>
+    </a>
+  </section>
+  
+  <section class="partners">
+    <p>Building and securing impactful tech — from ambitious student projects to real-world applications.<br> Let’s innovate, learn, and grow together!</p>
+
+    
+  </section>
+
+  <script>
+    function checkHuman() {
+      const input = document.getElementById('humanInput').value.toLowerCase();
+      if (input.includes('bot')) {
+        alert("Bot detected ❌");
+      } else if (input.trim() !== '') {
+        alert("You're human ✅");
+      } else {
+        alert("Please enter something!");
+      }
+    }
+  </script>
+</body>
+</html>
+
+

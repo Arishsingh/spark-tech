@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: url('Reflect.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 1rem;
+    }
+
+    .signup-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 0 15px rgba(142, 72, 255, 0.5);
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 1.8rem;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #6e3cff, #8f66ff);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.8rem;
+    }
+
+    .signup-btn:hover {
+      opacity: 0.9;
+    }
+
+    .signup-footer {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .signup-footer a {
+      color: #8f66ff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .signup-container {
+        padding: 2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Create Account</h2>
+    <form onsubmit="handleSignup(event)">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required pattern="[0-9]{10}" />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required />
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" required />
+      </div>
+      
+      <button class="signup-btn" type="submit">Sign Up</button>
+    </form>
+
+    <div class="signup-footer">
+      Already have an account? <a href="login.html">Login here</a>
+    </div>
+  </div>
+
+  <script>
+    function handleSignup(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+  
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+  
+      alert(`Welcome, ${name}! Your account has been created.`);
+  
+      // ✅ Redirect to index.html
+      
+        window.location.href = "index.html";
+   
+    }
+  </script>
+  
+</body>
+</html>
